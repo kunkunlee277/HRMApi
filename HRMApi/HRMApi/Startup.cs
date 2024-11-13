@@ -1,4 +1,8 @@
 using HRM.Repositories.Context;
+using HRM.Repositories.RepositoryClass.ImplementRepository;
+using HRM.Repositories.RepositoryClass.Interface;
+using HRM.Services.ServiceClass.HRM.ImplementServices;
+using HRM.Services.ServiceClass.HRM.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +39,9 @@ namespace HRMApi
             {
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnecttion"));
             });
+
+            services.AddTransient<IEmployeeStatusRepository, EmployeeStatusRepository>();
+            services.AddTransient<IEmployeeStatusSevice, EmployeeStatusSevice>();
 
             services.AddSwaggerGen(c =>
             {

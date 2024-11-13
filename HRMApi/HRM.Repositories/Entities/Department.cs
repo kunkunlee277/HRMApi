@@ -7,14 +7,21 @@ using System.Threading.Tasks;
 
 namespace HRM.Repositories.Entities
 {
-    public class BaseEntity
+    public class Department
     {
-        [Key]
-        public Guid Id { get; set; }
+        public int DepartmentID { get; set; }
+        [Required, MaxLength(100)]
+        public string DepartmentName { get; set; }
+
+        public Guid? ManagerID { get; set; }
         public DateTime CreatedDate { get; set; }
         public Guid? CreatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
         public Guid? UpdatedBy { get; set; }
         public bool IsDelete { get; set; }
+
+        public Employee Manager { get; set; }
+
+        public ICollection<Employee> Employees { get; set; }
     }
 }

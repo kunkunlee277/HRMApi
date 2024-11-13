@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace HRM.Repositories.Entities
 {
-    [Table("EmployeeStatus", Schema = "HRM")]
+    [Table("EmployeeStatuses", Schema = "HRM")]
     public class EmployeeStatus
     {
         [Key]
         public int StatusID { get; set; }
         public string StatusName { get; set; }
+
+        public ICollection<Employee> Employees { get; set; }
     }
 }
